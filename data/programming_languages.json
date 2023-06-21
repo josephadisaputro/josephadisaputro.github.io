@@ -1,0 +1,60 @@
+{
+    "title": "Programming Languages",
+    "paragraph": "Yusuf Adisaputro is a highly skilled programmer who has developed his expertise through a combination of academic and professional experiences. While he is proficient in numerous programming languages, the nature of his work may not require him to utilize all of them on a regular basis. However, Yusuf is highly adaptable and can seamlessly transition between languages, refreshing his knowledge as necessary. His logical thinking and extensive experience make him an invaluable asset to any development project.",
+    "languages": [
+        {
+            "name": "NodeJS along with its accompanying frameworks: NestJS SailsJS and ExpressJS",
+            "years": 4,
+            "confidence": 95,
+            "lastUse": "2023"
+        },
+        {
+            "name": "JavaScript",
+            "years": 4,
+            "confidence": 100,
+            "lastUse": "2023"
+        },
+        {
+            "name": "SQL Scripting",
+            "years": 3,
+            "confidence": 85,
+            "lastUse": "2023"
+        },
+        {
+            "name": "Java",
+            "years": 4,
+            "confidence": 40,
+            "lastUse": "2019"
+        },
+        {
+            "name": "PHP Laravel",
+            "years": 1,
+            "confidence": 30,
+            "lastUse": "2020"
+        },
+        {
+            "name": "ReactJS",
+            "years": 1,
+            "confidence": 40,
+            "lastUse": "2020"
+        },
+        {
+            "name": "Git",
+            "years": 4,
+            "confidence": 80,
+            "lastUse": "2023"
+        },
+        {
+            "name": "Golang",
+            "years": 1,
+            "confidence": 50,
+            "lastUse": "2022"
+        },
+        {
+            "name": "Eiffel Programming Language",
+            "years": 1,
+            "confidence": 20,
+            "lastUse": "2018"
+        }
+    ]
+}

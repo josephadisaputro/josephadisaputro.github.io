@@ -1,0 +1,64 @@
+{
+    "title": "Working Experience",
+    "paragraph": "Yusuf Adisaputro began his professional career while studying at a university in Canada. In 2020, he relocated to Indonesia and assumed the position of IT Supervisor, also referred to as a team leader. Since then, he has advanced in his career and achieved significant success in his field.",
+    "experiences":[
+        {
+            "workplace": "INFT.co",
+            "title": "Senior BackEnd Development & Scrum Master",
+            "workplaceDesc": "INFT.co, based in Singapore, offers financial technology services to both the Singaporean and Malaysian markets. The company has developed a web application and a modular mobile application to assist with financial and accounting tasks such as expense management, local and international money transfers, loans, invoicing, and more.",
+            "jobDescription": [
+                "Responsible as scrum master for product owners to present the vision and user stories to the entire scrumteam.",
+                "Responsible for upgrade features requested by product owners to implement.",
+                "Responsible for coordinating with vendors, for integration and other code implementation",
+                "Work and help the team for any difficulties found",
+                "Attend and host daily stand ups and conduct necessary technical meetings and also sprint planning for the next upcoming sprint.",
+                "Responsible for managing sprint logs",
+                "Responsible for working with product owners to design better flows in more technical implementations",
+                "Responsible for dealing with client deployed problems that occur",
+                "Work with third party vendors, such as vendors from Thailand to assist with certain developments and expansions",
+                "Responsible for providing product owner estimates of the development time required for each sprint"
+            ],
+            "date": "January 2022 - Now"
+        },
+        {
+            "workplace": "Vantsing International Group",
+            "title": "Vice General Manager (IT Manager)",
+            "workplaceDesc": "I was originally employed as an IT Supervisor and Senior Developer for an e-commerce project that encompassed the development of a Mobile, Website, and ERP System. Due to my skills and dedication, I was promoted to the position of IT Manager for the entire project, overseeing two teams located in Indonesia and China. The development successfully passed UAT and is currently operational. As an IT Manager and Senior Developer, my responsibilities included not only the development structure, technical diagrams, permissions, documentation, presentation, and reporting, but also coding alongside my team. Subsequently, the company’s head office in China expanded my scope of work and promoted me to the position of Vice General Manager. This was done to enable me to assist with marketing and business analysis for the Indonesian e-commerce market and to exercise full control over the team in Indonesia.",
+            "jobDescription": [
+                "Responsible for 3 development projects: ERP System, E-Commerce (Mobile App development & Web App development)",
+                "Responsible for providing the technical structure, security planning and structure, workflow, and flow of Mobile and web UI.",
+                "Responsible for result of the testing stages (SIT, UAT, Production)",
+                "Responsible for setting up all necessary tools like: git repository, test server, accepted automation testing tools, etc.",
+                "Responsible for third party API integration such as Tiki, BCA VA, midtrans",
+                "Develop and code front end and back end with the team using Node.js (Express), React, and vanilla JS.",
+                "Act as Product Owner to realize the desired target vision and mission"
+            ],
+            "date": "March 2020 - December 2021"
+        },
+        {
+            "workplace": "Verifone (Teleperformance)",
+            "title": "IT and Network Support Tier II",
+            "workplaceDesc": "Teleperformance is a third-party service provider that offers support for a diverse range of products from various companies, including but not limited to Google, Banks, and Verifone. My area of expertise lies in Verifone products, including pinpads (terminals used for credit/debit card payments), cashiers, commanders (central processing units), Fuel Controllers, and the communication between each device.",
+            "jobDescription": [
+                "Received technical problems that are coming from customers",
+                "Open or create a log note for every issue that are occurring with its details ",
+                "Understand the problem from the customer’s description and the case description",
+                "Narrow down the issue between hardware or software by troubleshooting",
+                "Push new software update, if the problem is software related or send request for new device if the problem is hardware and cannot be reconfigured ",
+                "Escalate troubleshooting to higher Tier if necessary",
+                "Log the case back to server or close if it is solved"
+            ],
+            "date": "June 2019 - End of January 2020"
+        },
+        {
+            "workplace": "Nimble Information Strategies Inc",
+            "title": "Data Entry Clerk",
+            "workplaceDesc": "Nimble Information Strategy is a company that provides cloud services, including cloud hosting, data entry, data retrieval, document storage, and more. During my studies at York University, I was employed on a part-time basis as a data entry clerk under a short-term contract.",
+            "jobDescription": [
+                "Entering client’s data using in-house program into client’s database",
+                "Employees must reach targeted 250 pages of data daily"
+            ],
+            "date": "June 2018 - August 2018"
+        }
+    ]
+}

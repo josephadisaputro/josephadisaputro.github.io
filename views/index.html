@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yusuf Adisaputro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
+        .taskbar{
+            width: 20vw;
+            height: 100vh;
+            background-color: #36454F;
+            transition: 0.5s;
+            border-radius: 0;
+        }
+        .applications{
+            margin: 5%;
+            width: calc(100% - 10% - 10%);
+            height: auto;
+            /* padding-top: 5%;
+            padding-bottom: 5%; */
+            padding: 5%;
+            background-color: #71797E;
+            border-radius: 0;
+            text-align: left;
+            font-size: x-large;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .active{
+            background-color: #6082B6;
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+            box-shadow: inset 0 0 10px #36454F;
+        }
+        .openCloseParent{
+            background-color: darkred;
+            /* font-size: 10px; */
+            width: 20px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0;
+        }
+        .openCloseParent div{
+            margin: 0;
+            padding: 0;
+            transform: rotate(90deg);
+        }
+        .group-horizontal{
+            position: fixed;
+            top: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            transition: 0.5s;
+        }
+
+        .openTaskbar{
+            left: 0 !important;
+            transition: 0.5s;
+        }
+        .closedTaskbar{
+            left: -20vw !important;
+            transition: 0.5s;
+        }
+        .content{
+            width: calc(80vw - 20px);
+            height: 100vh;
+            background-color: whitesmoke;
+            color: black;
+            transition: 0.5s;
+        }
+
+        .force100vw{
+            width: calc(100vw - 20px) !important;
+            transition: 0.5s;
+        }
+
+        .title{
+            font-size: xx-large;
+            font-weight: 700;
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vh;
+            margin-right: 1vh;
+        }
+
+        .paragraph{
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vh;
+            margin-right: 1vh;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            padding-left: 1vh;
+            padding-right: 1vh;
+            background-color: white;
+        }
+        .table{
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vh;
+            margin-right: 1vh;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            padding-left: 1vh;
+            padding-right: 1vh;
+        }
+        .desc{
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vh;
+            margin-right: 1vh;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            padding-left: 1vh;
+            padding-right: 1vh;
+            background-color: white;
+        }
+
+        .graphs{
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vh;
+            margin-right: 1vh;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            padding-left: 1vh;
+            padding-right: 1vh;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
+        .bar{
+            background-color: #6082B6;
+            width: 100%;
+            height: 5vh;
+        }
+        .activeBar{
+            background-color: #36454F;
+            /* width: calc(90% - 2%); */
+            height: 5vh;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            text-align: right;
+            font-weight: 600;
+            padding-right: 2%;
+            color: whitesmoke;
+        }
+        .smaller{
+            font-size: larger;
+        }
+        .subcontent{
+            overflow-y: scroll;
+            max-height: 100vh;
+        }
+        img{
+            background-color: whitesmoke;
+            max-width: 25%;
+        }
+        .pp{
+            max-width: calc(100% - 10%);
+            border-radius: 50%;
+            margin: 5%;
+        }
+
+        .black{
+            background-color: #36454F;
+        }
+        .gold{
+            background-color: #EEBC1D;
+            color: #36454F;
+            font-weight: 900;
+        }
+        .blue{
+            background-color: #0F52BA;
+            font-weight: 900;
+        }
+        .your-information{
+            position: fixed;
+            bottom: 1vh;
+            right: 1vw;
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 1vw;
+            color: black;
+            background-color: whitesmoke;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .taskbar {
+                width: calc(100vw - 20px);
+            }
+            .openTaskbar{
+                left: 0 !important;
+                transition: 0.5s;
+            }
+            .closedTaskbar{
+                left: calc(-1 * (100vw - 20px)) !important;
+                transition: 0.5s;
+            }
+            .content{
+                width: calc(100vw - 20px);
+                height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar group-horizontal openTaskbar">
+        <div class="taskbar">
+            <!-- https://www.linkedin.com/in/yusuf-adisaputro -->
+            <img class="pp" src="https://media.licdn.com/dms/image/C4D03AQHcDL3FUoXmnQ/profile-displayphoto-shrink_800_800/0/1517272131515?e=2147483647&v=beta&t=-3P_ZnSr56ZFbQypj3WpvNXhvH0glZfb15eA-RmzlbI"></img>
+
+            <div class="applications gold" id="linkedin" onClick="redirectTo('https://www.linkedin.com/in/yusuf-adisaputro')">
+                Yusuf Adisaputro
+            </div>
+        </div>
+        <div class="openCloseParent" onclick="openclose(`navbar`)">
+            <div>close</div>
+        </div>
+        <div class="content">
+            <div class="subcontent">
+            </div>
+        </div>
+    </div>
+    <div class="your-information">
+
+    </div>
+    <script>
+
+        async function redirectTo(path){
+            window.location.href = path;
+        }
+
+        generateApplications()
+        let elemApplications = []
+
+        async function openclose(el){
+            if($(`.${el}`).hasClass(`openTaskbar`)){
+                $(`.${el}`).removeClass(`openTaskbar`)
+                $(`.${el}`).addClass(`closedTaskbar`)
+                $(`.openCloseParent`).empty()
+                $(`.openCloseParent`).append(`<div>open</div>`)
+                $(`.openCloseParent`).css(`background-color`, `#6082B6`)
+                $(`.content`).addClass(`force100vw`)
+            }else if($(`.${el}`).hasClass(`closedTaskbar`)){
+                $(`.${el}`).removeClass(`closedTaskbar`)
+                $(`.${el}`).addClass(`openTaskbar`)
+                $(`.openCloseParent`).empty()
+                $(`.openCloseParent`).append(`<div>close</div>`)
+                $(`.openCloseParent`).css(`background-color`, `darkred`)
+                $(`.content`).removeClass(`force100vw`)
+            }
+        }
+
+        async function checkOverflow(el)
+        {
+            return new Promise(async (resolve, reject) => {
+                if ($(`#${el}`)[0].scrollWidth >  $(`#${el}`).innerWidth()) {
+                    resolve(true)
+                }
+                resolve(false)
+            });
+        }
+
+        async function generate(path, id){
+            const data = await apiCall(`${path}`, `GET`)
+            if(data){
+                $(`.applications`).removeClass('active')
+                $(`#${id}`).addClass('active')
+                $(`.subcontent`).empty()
+                $(`.subcontent`).append(`
+                    <div class="title">
+                        ${data.title}
+                    </div>
+                `)
+                $(`.subcontent`).append(`
+                    <div class="paragraph">
+                        ${data.paragraph}
+                    </div>
+                `)
+                if(data.education){
+                    $(`.subcontent`).append(`
+                        <div class="graphs">
+                        </div>
+                    `)
+                    for(const eachEducation of data.education){
+                        if(eachEducation.logo){
+                            if(eachEducation.name == 'Columbia International College'){
+                                $(`.graphs`).append(`
+                                    <img src="${eachEducation.logo}" class="logo black"></img>
+                                `)
+                            }else{
+                                $(`.graphs`).append(`
+                                    <img src="${eachEducation.logo}" class="logo"></img>
+                                `)
+                            }
+                        }
+                        $(`.graphs`).append(`
+                            <div class="title smaller">
+                                ${eachEducation.name} - ${eachEducation.major}
+                            </div>
+                            <a href="${eachEducation.link}" class"title smaller">Click to learn more</a>
+                            <div class="desc">
+                                ${eachEducation.year}
+                            </div>
+                        `)
+                    }
+                }
+                if(data.languages){
+                    $(`.subcontent`).append(`
+                        <div class="graphs">
+                        </div>
+                    `)
+                    for(const eachLanguage of data.languages){
+                        $(`.graphs`).append(`
+                            <div class="title smaller">
+                                ${eachLanguage.name}
+                            </div>
+                            <div class="bar">
+                                <div class="activeBar" id="${eachLanguage.name.split(" ").join("_")}">
+                                    Last used: ${eachLanguage.lastUse}
+                                </div>
+                            </div>
+                        `)
+                        $(`#${eachLanguage.name.split(" ").join("_")}`).css("width", `calc(${eachLanguage.confidence}% - 2%)`)
+                    }
+                }
+                if(data.experiences){
+                    $(`.subcontent`).append(`
+                        <div class="table">
+                        </div>
+                    `)
+                    console.log(data.experiences)
+                    for(const eachExperience of data.experiences){
+                        $(`.table`).append(`
+                            <div class="title smaller">
+                                ${eachExperience.workplace} - ${eachExperience.date}
+                            </div>
+                            <div class="title smaller">
+                                ${eachExperience.title}
+                            </div>
+                            <div class="desc">
+                                ${eachExperience.workplaceDesc}
+                            </div>
+                            <div class="desc">
+                                ${eachExperience.jobDescription}
+                            </div>
+                        `)
+                        for(const eachJobDesc of eachExperience.jobDescription){
+                            $(`.table`).append(`
+                                <li class="desc">
+                                    ${eachJobDesc}
+                                </li>
+                            `)
+                        }
+                    }
+                }
+                openclose(`navbar`)
+            }
+        }
+
+        async function generateApplications(){
+            const data = await apiCall(`menus`, `GET`)
+            if(data){
+                if(data.menus){
+                    for(const eachMenu of data.menus){
+                        $(`.taskbar`).append(`
+                            <div class="applications" id=${eachMenu.split(" ").join("_")} onClick=\"generate(\'${eachMenu.split(" ").join("_").toLowerCase()}\', \'${eachMenu.split(" ").join("_")}\')\">
+                                ${eachMenu}
+                            </div>
+                        `)
+                        elemApplications.push(
+                            `${eachMenu.split(" ").join("_")}`
+                        )
+                    }
+                    $(`.taskbar`).append(`
+                        <div class="applications blue" id="github" onClick="redirectTo('https://github.com/josephadisaputro')">
+                            GitHub
+                        </div>
+                    `)
+                    // default
+                    $(`#${elemApplications[0]}`).addClass(`active`)
+                    generate(elemApplications[0].split(" ").join("_").toLowerCase(), elemApplications[0])
+                }
+            }
+        }
+
+        getIP()
+        async function getIP(){
+            const ip = await ipCall();
+        
+            $(`.your-information`).append(`
+                ${ip.ip}
+            `)
+        }
+
+        async function ipCall(){
+            return new Promise(async (resolve, reject) => {
+                const settings = {
+                    "url": `http://localhost/ip`,
+                    "method": `GET`,
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                };
+
+                await $.ajax(settings).done(async function (response) {
+                    if(response){
+                        console.log(response)
+                        resolve(response)
+                    }else{
+                        resolve(false)
+                    }
+                });
+            });
+        }
+
+        async function apiCall(path, method){
+            return new Promise(async (resolve, reject) => {
+                const settings = {
+                    "url": `http://localhost/api/${path}`,
+                    "method": method? method : `GET`,
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                };
+
+                await $.ajax(settings).done(async function (response) {
+                    if(response){
+                        resolve(response)
+                    }else{
+                        resolve(false)
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
