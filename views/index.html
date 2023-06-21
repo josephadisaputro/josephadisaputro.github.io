@@ -414,7 +414,7 @@
         async function ipCall(){
             return new Promise(async (resolve, reject) => {
                 const settings = {
-                    "url": `http://localhost/ip`,
+                    "url": `https://yusuf-adisaputro.up.railway.app/ip`,
                     "method": `GET`,
                     "timeout": 0,
                     "headers": {
@@ -436,7 +436,7 @@
         async function apiCall(path, method){
             return new Promise(async (resolve, reject) => {
                 const settings = {
-                    "url": `http://localhost/api/${path}`,
+                    "url": `https://yusuf-adisaputro.up.railway.app/api/${path}`,
                     "method": method? method : `GET`,
                     "timeout": 0,
                     "headers": {

@@ -45,6 +45,8 @@ async function readFile(filename, isJSON = false){
     });
 }
 
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
+const PORT = process.env.PORT || 9000;
+
+app.listen(PORT, function () {
+  console.log(`CORS-enabled web server listening on port ${PORT}`)
 })
