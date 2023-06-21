@@ -23,7 +23,7 @@
         {
             "name": "Java",
             "years": 4,
-            "confidence": 40,
+            "confidence": 55,
             "lastUse": "2019"
         },
         {
@@ -35,7 +35,7 @@
         {
             "name": "ReactJS",
             "years": 1,
-            "confidence": 40,
+            "confidence": 50,
             "lastUse": "2020"
         },
         {
@@ -47,7 +47,7 @@
         {
             "name": "Golang",
             "years": 1,
-            "confidence": 50,
+            "confidence": 60,
             "lastUse": "2022"
         },
         {
