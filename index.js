@@ -1,8 +1,9 @@
 const express = require('express')
 const cors = require('cors')
 const fs = require('fs');
+const dotenv = require("dotenv");
+dotenv.config();
 const app = express()
-
 app.use(cors())
 
 app.get('/', async function (req, res, next) {
