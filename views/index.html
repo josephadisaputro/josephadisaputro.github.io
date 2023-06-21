@@ -331,7 +331,7 @@
                     for(const eachLanguage of data.languages){
                         $(`.graphs`).append(`
                             <div class="title smaller">
-                                ${eachLanguage.name}
+                                ${eachLanguage.name} - ${eachLanguage.years} years exp
                             </div>
                             <div class="bar">
                                 <div class="activeBar" id="${eachLanguage.name.split(" ").join("_")}">
