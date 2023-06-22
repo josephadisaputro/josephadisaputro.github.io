@@ -19,11 +19,15 @@ app.get('/api/:path', async function (req, res, next) {
     res.json(response)
 })
 
+app.get('/img/:path', async function (req, res, next) {
+    res.sendFile(__dirname + `/data/images/${req.params.path}.png`)
+})
+
 app.get('/ip', async function (req, res, next) {
     res.json({
         ip: req.socket.remoteAddress
     })
-  })
+})
 
 async function readFile(filename, isJSON = false){
     return new Promise(async (resolve, reject) => {
@@ -46,7 +50,7 @@ async function readFile(filename, isJSON = false){
     });
 }
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function () {
   console.log(`CORS-enabled web server listening on port ${PORT}`)

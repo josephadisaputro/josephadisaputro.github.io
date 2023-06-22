@@ -19,6 +19,12 @@
             font-family: 'Roboto', sans-serif;
             color: white;
         }
+        .navbar{
+            background-color: #36454F;
+            transition: 1s;
+            border-radius: 0;
+            overflow-y: scroll; 
+        }
         .taskbar{
             width: 20vw;
             height: 100vh;
@@ -247,10 +253,17 @@
             padding-top: 0;
             padding-bottom: 0;
         }
+        .wa{
+            background-color: green; 
+            cursor: pointer;  
+            border-radius: 10px;
+            max-width: 10%;
+        }
 
         @media only screen and (max-width: 600px) {
             .taskbar {
                 width: calc(100vw - 20px);
+                max-height: 95vh;
             }
             .openTaskbar{
                 left: 0 !important;
@@ -264,24 +277,29 @@
                 width: calc(100vw - 20px);
                 height: 100vh;
             }
+            .subcontent{
+                max-height: 95vh;
+            }
         }
     </style>
 </head>
 <body>
     <div class="navbar group-horizontal openTaskbar">
-        <div class="taskbar">
-            <!-- https://www.linkedin.com/in/yusuf-adisaputro -->
-            <img class="pp" src="https://media.licdn.com/dms/image/C4D03AQHcDL3FUoXmnQ/profile-displayphoto-shrink_800_800/0/1517272131515?e=2147483647&v=beta&t=-3P_ZnSr56ZFbQypj3WpvNXhvH0glZfb15eA-RmzlbI"></img>
+        <div class="navbar">
+            <div class="taskbar">
+                <!-- https://www.linkedin.com/in/yusuf-adisaputro -->
+                <img class="pp" src="https://media.licdn.com/dms/image/C4D03AQHcDL3FUoXmnQ/profile-displayphoto-shrink_800_800/0/1517272131515?e=2147483647&v=beta&t=-3P_ZnSr56ZFbQypj3WpvNXhvH0glZfb15eA-RmzlbI"></img>
 
-            <div class="applications contact" id="linkedin">
-                +62 812-9769-8374
-            </div>
-            <div class="applications contact" id="linkedin">
-                yusuf_adisaputro@hotmail.com
-            </div>
+                <div class="applications contact" id="linkedin" onClick="redirectToWA('https://wa.me/6281297698374?text=')">
+                    <img class="wa" src="https://yusuf-adisaputro.up.railway.app/img/whatsapp_logo"></img> +62 812-9769-8374 <!-- https://yusuf-adisaputro.up.railway.app -->
+                </div>
+                <div class="applications contact" id="linkedin">
+                    yusuf_adisaputro@hotmail.com
+                </div>
 
-            <div class="applications gold" id="linkedin" onClick="redirectTo('https://www.linkedin.com/in/yusuf-adisaputro')">
-                Yusuf Adisaputro
+                <div class="applications gold" id="linkedin" onClick="redirectTo('https://www.linkedin.com/in/yusuf-adisaputro')">
+                    Yusuf Adisaputro
+                </div>
             </div>
         </div>
         <div class="openCloseParent" onclick="openclose(`navbar`)">
@@ -299,6 +317,10 @@
 
         async function redirectTo(path){
             window.location.href = path;
+        }
+
+        async function redirectToWA(path){
+            window.location.href = path + encodeURI(`Hi Yusuf, I'm HRD interested in your portfolio and would like to contact you further!`);
         }
 
         generateApplications()
@@ -514,6 +536,27 @@
             return new Promise(async (resolve, reject) => {
                 const settings = {
                     "url": `https://yusuf-adisaputro.up.railway.app/api/${path}`, //https://yusuf-adisaputro.up.railway.app
+                    "method": method? method : `GET`,
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                };
+
+                await $.ajax(settings).done(async function (response) {
+                    if(response){
+                        resolve(response)
+                    }else{
+                        resolve(false)
+                    }
+                });
+            });
+        }
+
+        async function apiImgCall(path, method){
+            return new Promise(async (resolve, reject) => {
+                const settings = {
+                    "url": `https://yusuf-adisaputro.up.railway.app/img/${path}`, //https://yusuf-adisaputro.up.railway.app
                     "method": method? method : `GET`,
                     "timeout": 0,
                     "headers": {
