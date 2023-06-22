@@ -57,6 +57,7 @@
             margin: 0;
             padding: 0;
             transform: rotate(90deg);
+            font-weight: 700;
         }
         .group-horizontal{
             position: fixed;
@@ -201,6 +202,45 @@
             color: black;
             background-color: whitesmoke;
         }
+        .arrow{
+            height: 5vh;
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+        .bar-left{
+            width: 5vh;
+            height: 2vh;
+            background-color: #36454F;
+            transform: rotate(25deg);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            position: relative;
+            left: 7px;
+        }
+        .bar-right{
+            width: 5vh;
+            height: 2vh;
+            background-color: #36454F;
+            transform: rotate(-25deg);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            position: relative;
+            right: 7px;
+        }
+        .contact{
+            background-color: transparent !important;
+            color: whitesmoke;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
 
         @media only screen and (max-width: 600px) {
             .taskbar {
@@ -226,6 +266,13 @@
         <div class="taskbar">
             <!-- https://www.linkedin.com/in/yusuf-adisaputro -->
             <img class="pp" src="https://media.licdn.com/dms/image/C4D03AQHcDL3FUoXmnQ/profile-displayphoto-shrink_800_800/0/1517272131515?e=2147483647&v=beta&t=-3P_ZnSr56ZFbQypj3WpvNXhvH0glZfb15eA-RmzlbI"></img>
+
+            <div class="applications contact" id="linkedin" onClick="redirectTo('https://www.linkedin.com/in/yusuf-adisaputro')">
+                +62 812-9769-8374
+            </div>
+            <div class="applications contact" id="linkedin" onClick="redirectTo('https://www.linkedin.com/in/yusuf-adisaputro')">
+                yusuf_adisaputro@hotmail.com
+            </div>
 
             <div class="applications gold" id="linkedin" onClick="redirectTo('https://www.linkedin.com/in/yusuf-adisaputro')">
                 Yusuf Adisaputro
@@ -257,7 +304,7 @@
                 $(`.${el}`).addClass(`closedTaskbar`)
                 $(`.openCloseParent`).empty()
                 $(`.openCloseParent`).append(`<div>open</div>`)
-                $(`.openCloseParent`).css(`background-color`, `#6082B6`)
+                $(`.openCloseParent`).css(`background-color`, `#d89b00`)
                 $(`.content`).addClass(`force100vw`)
             }else if($(`.${el}`).hasClass(`closedTaskbar`)){
                 $(`.${el}`).removeClass(`closedTaskbar`)
@@ -374,6 +421,30 @@
                 }
                 openclose(`navbar`)
             }
+            $(`.subcontent`).append(`
+                <div class="arrow" onclick="nextPage(\'${id}\')">
+                    <div class="bar-left"></div>
+                    <div class="bar-right"></div>
+                </div>
+            `)
+        }
+
+        async function nextPage(id){
+            $(`.arrow`).css(`transform`, `rotate(180deg)`)
+            setTimeout(async () => {
+                const data = await apiCall(`menus`, `GET`)
+                let nextPageIndex = 0;
+                if(data){
+                    if(data.menus){
+                        let findIndex = data.menus.findIndex((a) =>{return a.split(" ").join("_") == id})
+                        if(findIndex != -1 && (findIndex + 1) < data.menus.length){
+                            nextPageIndex = (findIndex + 1);
+                        }
+                    }
+                }
+                generate(data.menus[nextPageIndex].toLowerCase().split(" ").join("_"), data.menus[nextPageIndex].split(" ").join("_"))
+                openclose(`navbar`)
+            }, 600);
         }
 
         async function generateApplications(){
@@ -414,7 +485,7 @@
         async function ipCall(){
             return new Promise(async (resolve, reject) => {
                 const settings = {
-                    "url": `https://yusuf-adisaputro.up.railway.app/ip`,
+                    "url": `https://yusuf-adisaputro.up.railway.app/ip`, //https://yusuf-adisaputro.up.railway.app
                     "method": `GET`,
                     "timeout": 0,
                     "headers": {
@@ -436,7 +507,7 @@
         async function apiCall(path, method){
             return new Promise(async (resolve, reject) => {
                 const settings = {
-                    "url": `https://yusuf-adisaputro.up.railway.app/api/${path}`,
+                    "url": `https://yusuf-adisaputro.up.railway.app/api/${path}`, //https://yusuf-adisaputro.up.railway.app
                     "method": method? method : `GET`,
                     "timeout": 0,
                     "headers": {
