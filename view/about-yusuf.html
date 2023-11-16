@@ -1,0 +1,563 @@
+<style>
+    .header-profile{
+        width: 96%;
+        margin: 1%;
+        background-color: white !important;
+        border-radius: 5px;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        padding: 1%;
+    }
+    .header-profile .profile-picture{
+        width: 20%;
+        height: 100%;
+        background-image: url('./png/user.png');
+        background-repeat: no-repeat;
+        background-size:contain;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .header-profile .profile-picture a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-indent: -9999px; /* hides the link text */
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    }
+
+    .header-profile .profile-picture:hover a {
+        opacity: 1;
+    }
+    @media only screen and (max-width: 550px) {
+        .header-profile .profile-picture{
+            width: 40% !important;
+        }
+    }
+    .header-profile .short-profile{
+        width: 80%;
+        height: 100%;
+        margin-left: 1%;
+        background-color: whitesmoke !important;
+        border-radius: 5px;
+    }
+    .header-profile .short-profile .profile-title{
+        background-color: whitesmoke !important;
+        color: black !important;
+        padding: 1%;
+        text-align: center;
+        font-size: large !important;
+    }
+    .subheader-profile{
+        width: 98%;
+        margin: 1%;
+        margin-top: 0%;
+        padding-bottom: 1%;
+        background-color: transparent !important;
+        border-radius: 5px;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .subheader-profile .shortcut{
+        position: relative;
+        min-width: 15.6%;
+        padding: 1%;
+        margin-top: 1%;
+        margin-bottom: 0%;
+        margin-left: 1%;
+        margin-right: 1%;
+        background-color: whitesmoke !important;
+        color: black !important;
+        border-radius: 5px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+    }
+    .subheader-profile .shortcut.active{
+        background-color: #007AFF !important;
+        color: white !important;
+    }
+    .body-profile{
+        width: 96%;
+        margin: 1%;
+        margin-top: 0;
+        background-color: whitesmoke !important;
+        border-radius: 5px;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+    }
+    .body-profile .profile-data{
+        background-color: whitesmoke !important;
+        color: black !important;
+        border-top: 1px solid black;
+    }
+    .body-profile .profile-data .profile-title{
+        background-color: whitesmoke !important;
+        color: black !important;
+        padding: 1%;
+        text-align: center;
+        font-size: large !important;
+    }
+    .body-profile .profile-data .profile-content{
+        background-color: whitesmoke !important;
+        color: black !important;
+        text-align: left;
+        font-size: medium !important;
+        padding: 1%;
+        padding-top: 0;
+    }
+    table{
+        width: 100%;
+    }
+    table, td {
+        padding: 1%;
+        border: 0;
+    }
+    .short-profile-left{
+        width: 50%;
+        padding-right: 1%;
+        text-align: right;
+        color: black !important;
+        border-right: 1px solid black;
+    }
+    .short-profile-right{
+        word-break: break-all;
+        width: 50%;
+        padding-left: 1%;
+        text-align: left;
+        color: black !important;
+    }
+    .section-2{
+        display: flex;
+        flex-direction: row;
+    }
+    .section-2 .profile-content{
+        width: 50%;
+    }
+    .download-button {
+        display: inline-block;
+        background-color: #007AFF !important; /* iPhone blue */
+        color: #FFFFFF !important; /* White */
+        padding: 2% 4%;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+    @media only screen and (max-width: 550px) {
+        .download-button {
+            display: inline-block;
+            background-color: #007AFF !important; /* iPhone blue */
+            color: #FFFFFF !important; /* White */
+            padding: 5% 10%;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+    }
+
+    .download-button:hover {
+        background-color: #0051FF; /* Darker blue */
+    }
+
+    .close-btn {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: white;
+        color: #007AFF;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+</style>
+<div class="close-content" onclick="closeActiveMenu()">
+    Close
+</div>
+<div class="header-profile">
+    <div class="profile-picture">
+        <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Smashicons - Flaticon</a>
+    </div>
+    <div class="short-profile">
+        <div class="profile-title">
+            Yusuf Adisaputro
+        </div>
+        <table>
+            <tr>
+                <td class="short-profile-left">Phone Number</td>
+                <td class="short-profile-right">081297698374</td>
+            </tr>
+            <tr>
+                <td class="short-profile-left">Email Address</td>
+                <td class="short-profile-right">yusuf_adisaputro@hotmail.com</td>
+            </tr>
+            <tr>
+                <td class="short-profile-left">Birthday</td>
+                <td class="short-profile-right">25 September 1996</td>
+            </tr>
+            <tr>
+                <td class="short-profile-left">Religion</td>
+                <td class="short-profile-right">Christian</td>
+            </tr>
+            <tr>
+                <td class="short-profile-left">Nationality</td>
+                <td class="short-profile-right">Indonesian</td>
+            </tr>
+            <tr>
+                <td class="short-profile-left">LinkedIn</td>
+                <td class="short-profile-right">https://www.linkedin.com/in/yusuf-adisaputro</td>
+            </tr>
+            <tr>
+                <td class="short-profile-left">Github</td>
+                <td class="short-profile-right">https://github.com/josephadisaputro</td>
+            </tr>
+            <tr>
+                <td class="short-profile-left">PDF</td>
+                <td class="short-profile-right"><button class="download-button" onclick="downloadResume()">Download</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="subheader-profile">
+    <div class="shortcut" id="shortcut-section-1">
+        Work Experiences
+    </div>
+    <div class="shortcut" id="shortcut-section-2">
+        Educations
+    </div>
+    <div class="shortcut" id="shortcut-section-3">
+        Projects (Highlights)
+    </div>
+    <div class="shortcut" id="shortcut-section-4">
+        Skills
+    </div>
+</div>
+<div class="body-profile">
+    <div class="profile-data" id="section-1">
+        <div class="profile-title">
+            PT ITC Auto MultiFinance (Known for PayKu)
+            <br>
+            November 2022 - present, as Head of Initiative Development
+        </div>
+        <div class="profile-content">
+            Established in 2018, PayKu is a distinguished financing company specialising in mobile and
+            smartphone financing. The company operates under the management of PT ITC Auto Multi Finance,
+            also known as IAF Multi Finance. PayKu offers its clients instalment financing services, with down
+            payments commencing from as low as 10%. Notably, the company does not impose late fees and
+            operates without the need for credit cards. All operations and services are conducted in compliance
+            with the regulations set forth by the Financial Services Authority (OJK).
+            <br>
+            <br>
+            <div>Job Responsibilities:&nbsp;<div><br>
+                <div>1. Assume the role of Product Owner and Project Manager for the development of mobile and
+                web applications, catering to both customer and internal requirements.&nbsp;</div>
+                <div>2. Ensure all developments are in compliance with the regulations of the Financial Services
+                Authority (OJK).&nbsp;</div>
+                <div>3. Exhibit initiative in IT and product development, specifically for PayKu and PayKu Premium.&nbsp;</div>
+                <div>4. Manage teams and projects effectively, creating comprehensive roadmaps for all undertaken
+                projects.&nbsp;</div>
+                <div>5. Conduct research to identify potential improvements in product offerings, financial services,
+                and IT-related developments.&nbsp;</div>
+                <div>6. Collaborate with the Scrum Master to ensure successful project delivery.&nbsp;</div>
+                <div>7. Work closely with client relations teams to foster innovation and develop new products</div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-title">
+            Inft Singapore Pte. Ltd.
+            <br>
+            January 2022 - November 2022, as Senior Back End Engineer and Team Lead
+        </div>
+        <div class="profile-content">
+            INFT.co, based in Singapore, is a distinguished provider of financial technology services, catering to
+            both the Singaporean and Malaysian markets. The company has developed a web application and a
+            modular online mobile application designed to streamline financial and accounting processes. These
+            applications facilitate efficient management of expenses, local and international money transfers,
+            loans, invoices, among other financial operations.
+            <br>
+            <br>
+            <div>Job Responsibilities:&nbsp;<div><br>
+                <div>1. Serve as the Scrum Master, presenting the vision and user stories from product owners to
+                    the entire Scrum team.&nbsp;</div>
+                <div>2. Implement feature upgrades as requested by product owners.&nbsp;</div>
+                <div>3. Coordinate with vendors for code integration and implementation.&nbsp;</div>
+                <div>4. Assist the team in resolving any difficulties encountered.&nbsp;</div>
+                <div>5. Host daily stand-ups, conduct necessary technical meetings, and plan for upcoming sprints.&nbsp;</div>
+                <div>6. Manage sprint logs effectively.&nbsp;</div>
+                <div>7. Collaborate with product owners to design improved workflows for technical implementations.</div>
+                <div>8. Address client-deployed issues as they arise.</div>
+                <div>9. Liaise with third-party vendors, including those from Thailand, to facilitate developments and expansions.</div>
+                <div>10. Provide product owners with development time estimates for each sprint.</div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-title">
+            PT Vantsing International Group (PT Solusi Digital Internusa)
+            <br>
+            March 2020 - December 2021, as IT manager (also act as the Vice General Manager)
+        </div>
+        <div class="profile-content">
+            I commenced my journey as an IT Supervisor and Senior Developer for an e-commerce project, which
+            encompassed the development of Mobile, Website, and ERP Systems. My commitment and
+            proficiency led to my promotion as the IT Manager for the entire project, overseeing two teams
+            based in Indonesia and China. The development phase was successfully completed, passing the User
+            Acceptance Testing (UAT), and is currently operational.
+            In my capacity as an IT Manager and Senior Developer, my responsibilities extended beyond the
+            realms of development structure, technical diagrams, permissions, documentation, presentation,
+            and reporting. I also actively participated in coding alongside my team.
+            Given the location of the company's head office in China, I was entrusted with an expanded scope of
+            work and promoted to the position of Vice General Manager. This promotion was a testament to
+            their confidence in my ability to contribute to marketing and business analysis required for the
+            e-commerce sector in the Indonesian market, as well as manage the team in Indonesia effectively.
+            <br>
+            <br>
+            <div>Job Responsibilities:&nbsp;<div><br>
+                <div>1. Oversee three development projects encompassing ERP systems, Mobile App, and Website
+                    development.&nbsp;</div>
+                <div>2. Manage the ERP system for key business processes such as sales, invoices, products, etc.
+                    &nbsp;</div>
+                <div>3. Provide the technical structure, security planning, workflow, and UI flow for Mobile and Web
+                    applications.
+                    &nbsp;</div>
+                <div>4. Ensure successful completion of testing stages (SIT, UAT, Production).&nbsp;</div>
+                <div>5. Set up essential tools including git repository, test server, and accepted automation testing
+                    tools.
+                    &nbsp;</div>
+                <div>6. Handle third-party API integration such as Tiki, BCA VA, Midtrans.&nbsp;</div>
+                <div>7. Collaborate with the team to develop and code front-end and back-end using Node.js
+                    (Express), React, and Vanilla JS.</div>
+                <div>8. Act as the Product Owner to achieve the target vision and mission.</div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-title">
+            TELEPERFORMANCE (Verifone)
+            <br>
+            June 2019 - January 2020, as IT and Network Support Level II
+        </div>
+        <div class="profile-content">
+            Teleperformance serves as a third-party service provider for companies seeking support for their
+            products. Our clientele spans a diverse range of industries, including but not limited to Google,
+            Banking institutions, and Verifone among others. My area of expertise lies in Verifone products,
+            encompassing a variety of devices such as the pinpad (a terminal utilized for credit/debit card
+            payments), cash registers, commanders (the primary CPUs), Fuel Controllers, and the communication
+            interfaces between each device.
+            <br>
+            <br>
+            <div>Job Responsibilities:&nbsp;<div><br>
+                <div>1. Receive and address technical issues reported by customers.&nbsp;</div>
+                <div>2. Document each issue in detail in a log note.
+                    &nbsp;</div>
+                <div>3. Comprehend the problem based on the customer's description and case details.
+                    &nbsp;</div>
+                <div>4. Distinguish between hardware and software issues through troubleshooting.
+                    &nbsp;</div>
+                <div>5. Implement a software update if the issue is software-related, or request a new device if the
+                    issue pertains to hardware and cannot be reconfigured.&nbsp;</div>
+                <div>6. Escalate troubleshooting to a higher Tier if required.
+                    &nbsp;</div>
+                <div>7. Log the resolved case back to the server or close it upon resolution.</div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-title">
+            NIMBLE INFORMATION STRATEGIES Inc.
+            <br>
+            June 2018 - August 2020, as Data Entry Clerk
+        </div>
+        <div class="profile-content">
+            Nimble Information Strategy is a reputable company specialising in cloud services, encompassing
+            cloud hosting, data entry, data retrieval, document storage, and more. During my academic tenure at
+            York University, I had the opportunity to contribute to this dynamic team as a Data Entry Clerk on a
+            part-time basis under a short-term contract.
+            <br>
+            <br>
+            <div>Job Responsibilities:&nbsp;<div><br>
+                <div>1. Input client data into the client's database using an in-house program.&nbsp;</div>
+                <div>2. Meet the daily target of processing 250 pages of data.&nbsp;</div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-title">
+            Teaching Assistant Middle School (Mathematics)
+            <br>
+            Sept 2013 - Sept 2014, as a volunteer
+        </div>
+        <div class="profile-content">
+            During my high school tenure in Canada, I had the privilege of volunteering as an Assistant Teacher
+            for a Grade 11 Mathematics course. Owing to my proficiency in Mathematics, I was entrusted with
+            this responsibility. My role encompassed assisting students with their homework and facilitating their
+            understanding of the course material through additional instruction.
+        </div>
+    </div>
+    <div class="profile-data" id="section-2">
+        <div class="section-2">
+            <div class="profile-content">
+                York University
+            </div>
+            <div class="profile-content">
+                Bachelor of Arts in Computer Science, Sept 2015-2019
+            </div>
+        </div>
+        <div class="section-2">
+            <div class="profile-content">
+                Carleton University
+            </div>
+            <div class="profile-content">
+                Bachelor of Math in Game Development, Sept 2014-2015
+            </div>
+        </div>
+        <div class="section-2">
+            <div class="profile-content">
+                Columbia International College
+            </div>
+            <div class="profile-content">
+                High School, Sept 2012-2014
+            </div>
+        </div>
+        <div class="section-2">
+            <div class="profile-content">
+                UPHC (Universitas Pelita Harapan College)
+            </div>
+            <div class="profile-content">
+                High School, 2011-2012
+            </div>
+        </div>
+    </div>
+    <div class="profile-data" id="section-3">
+        <div class="profile-title">
+            Web-Based Tools/Applications Development Project
+        </div>
+        <div class="profile-content">
+            This project is a collaborative endeavor
+            undertaken by my colleague and myself, following our graduation. Our shared passion for web
+            development and continuous learning led us to the decision of constructing a website utilizing
+            Node.js for back-end operations, MySQL for database management, and Bootstrap for CSS.
+            The unique advantage of this project lies in our approach to learning. We actively engage with
+            professionals in the field, including church members and priests, to understand the necessary
+            features and potential enhancements for our project.
+            The project aims to develop functional tools such as an automated notification system for
+            announcements/events with varying authentication levels, automated ministry scheduling, a
+            web-based cloud drive (akin to Google Drive), an automated transport scheduler (similar to Uber),
+            chat rooms, and more.
+            In addition to this project, I have also developed a comprehensive e-commerce system named
+            sold.co.id, which is now available on the Play Store. The development process involved the use of
+            Node.js with Express for back-end operations, Docker for VM containerization, MySQL and Oracle for
+            database management, Vue.js for ERP, React for minor website components, and Vanilla JS.
+        </div>
+        <div class="profile-title">
+            Development of a Media Encryption Application (Personal Project)
+        </div>
+        <div class="profile-content">
+            This project serves as a
+            platform to refine my Java skills. It is reminiscent of academic projects undertaken during my
+            schooling, where text encryption was implemented using the C language. The primary objective of
+            this project is to gain proficiency in multithreading. It employs a strategy where a single task is
+            executed by five threads, divided into four distinct task segments.
+        </div>
+        <div class="profile-title">
+            Development of a Single-Player Warship Game using Eiffel Programming Language
+        </div>
+        <div class="profile-content">
+            This project,
+            undertaken in collaboration with partners, involves the creation of a single-player battleship game.
+            The game design is rooted in object-oriented principles, with the game state represented as an
+            object. To optimize memory usage, only specific variables active during gameplay are retained in
+            memory. This approach prevents redundancy that could arise from storing all objects associated with
+            the game state.            
+        </div>
+    </div>
+    <div class="profile-data" id="section-4">
+        <div class="profile-title">
+            Programming Languages
+        </div>
+        <div class="profile-content">
+            Proficient in Java, C, C++, Shell Scripting, HTML, CSS, JavaScript
+            (including Bootstrap and Node.js with Express framework, Nest.js, Sails.js), SQL, Eiffel, Verilog, MIPS.
+            Experienced in developing Android Apps using Java, Docker, Redis, React.js, Golang and PHP
+            (Laravel).
+        </div>
+        <div class="profile-title">
+            UI/UX Tools
+        </div>
+        <div class="profile-content">
+            Skilled in using Figma for designing user interfaces.
+        </div>
+        <div class="profile-title">
+            Product Management Tools
+        </div>
+        <div class="profile-content">
+            Proficient in using ClickUp, Jira and Lucidchart for product
+            management.
+        </div>
+        <div class="profile-title">
+            Office Applications
+        </div>
+        <div class="profile-content">
+            Proficient in using MS Office Suite, Google Docs and LaTeX for office productivity
+tasks
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $(".shortcut").click(function() {
+            // Remove active class and close button from all shortcuts
+            $(".shortcut").removeClass("active").find(".close-btn").remove();
+            
+            // Add active class to the clicked shortcut
+            $(this).addClass("active");
+            
+            // Add close button to the clicked shortcut
+            $(this).append('<div class="close-btn">x</div>');
+            
+            // Bind click event to the close button
+            $(this).find(".close-btn").click(function(e) {
+                e.stopPropagation();
+                
+                // Remove active class and close button from the parent shortcut
+                $(this).parent().removeClass("active");
+                $(this).remove();
+                
+                // Show all sections in the body-profile
+                $(".body-profile .profile-data").show();
+            });
+            
+            // Get the id of the clicked shortcut
+            var id = $(this).attr("id").split("-")[2];
+            
+            // Hide all sections in the body-profile
+            $(".body-profile .profile-data").hide();
+            
+            // Show the section with the respected id
+            $("#section-" + id).show();
+        });
+    });
+
+    function downloadResume() {
+        var link = $('<a></a>');
+        link.attr('href', `./pdf/29102023_resume.pdf?token=${localStorage.getItem('sessiontokenhrd')}`);
+        link.attr('download', '29102023_resume.pdf');
+        link[0].click();
+    }
+
+</script>
