@@ -14,6 +14,7 @@
         body html{
             width: 100%;
             height: 100%;
+            font-family: 'Roboto', sans-serif;
         }
         ::-webkit-scrollbar {
             display: none;
@@ -575,7 +576,7 @@
             height: 100%;
             display: flex;
             background-color: #006ee6;
-
+            font-family: 'Roboto', sans-serif;
         }
         body .background .container{
             position: absolute;
@@ -642,6 +643,106 @@
             background-color: whitesmoke;
         }
     </style>
+    <style>
+        .password-request{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(4, 40, 149, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .password-request div{
+            margin: 1vh;
+        }
+        .password-request .title{
+            text-align: center;
+            font-size: 5vh;
+            font-weight: 900;
+            color: white;
+        }
+        .password-request .subtitle{
+            text-align: center;
+            font-size: 3vh;
+            font-weight: 900;
+            color: white;
+        }
+        .password-request .input-group{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            font-size: 3vh;
+        }
+        @media only screen and (max-width: 768px) {
+            .password-request .input-group{
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                font-size: 3vh;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .password-request .input-group .input-password{
+            border-radius: 10px;
+            border: none;
+            background-color: white;
+            font-size: 3vh;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            margin-left: 2vh;
+            margin-right: 2vh;
+            text-align: center;
+        }
+        .password-request .input-group .input-password:focus{
+            border: none;
+            outline: none;
+        }
+        .password-request .input-group .button-submit{
+            border-radius: 10px;
+            border: none;
+            background-color: #006ee6;
+            color: white;
+            font-size: 3vh;
+            padding-left: 2vh;
+            padding-right: 2vh;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            cursor: pointer;
+        }
+        @media only screen and (max-width: 768px) {
+            .password-request .input-group .button-submit{
+                border-radius: 10px;
+                border: none;
+                background-color: #006ee6;
+                color: white;
+                font-size: 3vh;
+                width: fit-content;
+                padding-left: 2vh;
+                padding-right: 2vh;
+                padding-top: 1vh;
+                padding-bottom: 1vh;
+                cursor: pointer;
+                margin-top: 2vh;
+            }
+        }
+        .failed-alert{
+            position: absolute;
+            top: 1vh;
+            left: 25%;
+            width: 50%;
+            text-align: center;
+            font-size: 3vh;
+            color: white;
+            background-color: #004999;
+            border-radius: 10px;
+            padding: 1vh;
+        }
+    </style>
 </head>
 <body>
     <div class="background">
@@ -704,14 +805,37 @@
         </footer>
     </div>
 
+    <div class="password-request">
+        <div class="title">Password is required</div>
+        <div class="subtitle">Entering password is required for you to enter before entering the website and viewing the content portfolio</div>
+        <div class="subtitle">Please respect the creator of this portfolio as this portfolio is intended for recruitment only and the content on this website cannot be downloaded nor shared, unless you request owner's permission.</div>
+        <div class="input-group">
+            <input class="input-password" type="password" placeholder="password"/>
+            <button id="submitpassword" class="button-submit">Submit</button>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
             startTime();
             startCalendar();
+            $('#submitpassword').click(function() {
+                var password = 'hiringyusuf25091996';
+                var inputPassword = $('.input-password').val();
+                if (password === inputPassword) {
+                    $('.password-request').remove();
+                } else {
+                    var failedAlert = $('<div/>', {
+                        'class': 'failed-alert',
+                        'text': 'Password does not match!'
+                    });
+                    $('.password-request').append(failedAlert);
+                }
+            });
         });
 
         function closeTab(element){
-            $(`.body .tab`).css(`visibility`, `hidden`);
+            $(`.body .tab`).css(`visibility`, `visible`);
             $(`.action-app`).removeClass(`active`);
         }
 
