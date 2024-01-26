@@ -39,6 +39,14 @@ $('#pp').on('contextmenu', function(e) {
     return false;
 });
 
+$('.password-request').on('contextmenu', function(e) {
+    return false;
+});
+
+$('.body-tab').on('contextmenu', function(e) {
+    return false;
+});
+
 function startCalendar() {
     const today = new Date();
     let y = today.getFullYear();
@@ -152,7 +160,7 @@ function renderAbout(){
             <div class="card pp">
                 <img id="pp" class="image" src="./img_avatar.png"/> 
             </div>
-            <div class="card summary">
+            <div class="card summary" id="personal-summary">
                 <table>
                     <tr>
                         <td class="right">Email</td>
