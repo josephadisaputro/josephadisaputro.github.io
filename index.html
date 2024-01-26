@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yusuf Adisaputro - Portfolio">
+    <meta name="keywords" content="Yusuf Adisaputro, Portfolio, Work Experience, Skills">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <title>Yusuf Adisaputro - Portfolio</title>
+    <style>
+        body html{
+            width: 100%;
+            height: 100%;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .body{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: calc(100vw - 2vh);
+            height: calc(100vh - 2vh);
+            padding: 1vh;
+            background-color: transparent;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            font-family: 'Roboto', sans-serif;
+        }
+        .body .tab{
+            visibility: hidden;
+            width: calc(100vw - 2vh);
+            height: calc(100vh - 5vh - 5vh);
+            background-color: white;
+            border-radius: 5px;
+        }
+        .body .tab .header{
+            width: calc(100vw - 2vh);
+            height: calc(3vh);
+            background-color: rgba(143, 142, 137, 0.2);
+            border-radius: 5px 5px 0 0 ;
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+        .body .tab .header .action{
+            width: 2.5vh;
+            height: 2.5vh;
+            background-color: darkred;
+            border-radius: 50%;
+            margin-left: 1vh;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .body .tab .header .action.close{
+            width: 2.5vh;
+            height: 2.5vh;
+            background-color: darkred;
+            border-radius: 50%;
+            margin-left: 1vh;
+        }
+        .body .tab .header .action.expand{
+            width: 2.5vh;
+            height: 2.5vh;
+            background-color: #006ee6;
+            border-radius: 50%;
+            margin-left: 1vh;
+        }
+        .body .tab .body-tab{
+            position: relative;
+            width: calc(100vw - 2vh - 1vh);
+            height: calc(100vh - 5vh - 5vh - 3vh - 1vh);
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            overflow-y: scroll;
+            padding: 0.5vh;
+        }
+        .body .tab .body-tab .card{
+            width: calc(100% - 2vh);
+            background-color: white;
+            border-radius: 5px;
+            margin: 0.5vh;
+            padding: 0.5vh;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .body .tab .body-tab .card .stories{
+            height: fit-content;
+        }
+        @media only screen and (max-width: 768px) {
+            .body .tab .body-tab .card.headline{
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
+        }
+        .body .tab .body-tab .card .pp{
+            position: relative;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .body .tab .body-tab .card .pp .image {
+            opacity: 1;
+            display: block;
+            max-height: 20vh;
+            transition: .5s ease;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            border-radius: 5px;
+            backface-visibility: hidden;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .body .tab .body-tab .card .summary{
+            background-color: transparent;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: scroll;
+        }
+        .body .tab .body-tab .card.line-details{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+        .body .tab .body-tab .card.line-details .title{
+            text-align: center;
+            font-size: 4vh;
+            font-weight: 900;
+            margin: 1vh;
+        }
+        .body .tab .body-tab .card.line-details .subtitle{
+            text-align: center;
+            font-size: 3vh;
+            font-weight: 900;
+            margin: 1vh;
+        }
+        .body .tab .body-tab .card.line-details .story{
+            font-size: 2vh;
+        }
+        .body .tab .body-tab .card.life-line{
+            position: relative;
+            width: 20vw !important;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        .body .tab .body-tab .card.life-line .line{
+            position: absolute;
+            width: 15%;
+            height: calc(100% - 1vh);
+            background-color: #004999;
+            border-radius: 10px;
+        }
+        .body .tab .body-tab .card.life-line .ball{
+            position: absolute;
+            top: calc(50% - 2.5vw);
+            aspect-ratio: 1/1;
+            width: 5vw;
+            border-radius: 50%;
+            background-color: #006ee6;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media only screen and (max-width: 768px) {
+            .body .tab .body-tab .card.life-line .ball{
+                width: fit-content;
+                padding: 0.5vh;
+            }
+        }
+        .footer{
+            position: fixed;
+            bottom: 1vh;
+            left: 1vh;
+            width: calc(100vw - 4vh);
+            height: 5vh;
+            padding: 1vh;
+            background-color: rgba(143, 142, 137, 0.5);
+            box-shadow: 0 8px 6px -6px black;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .footer .utilities{
+            width: calc(20vw - 2vh);
+            height: 100%;
+            background-color: transparent;
+        }
+        .footer .actions{
+            width: 60vw;
+            height: 100%;
+            background-color: transparent;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer .actions .action-app{
+            aspect-ratio: 1/1;
+            height: 100%;
+            background-color: white;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0.5vh;
+            margin-right: 0.5vh;
+            cursor: pointer;
+            transition: 0.5s;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .footer .actions .action-app.active{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            transition: 0.5s;
+        }
+        .footer .actions .action-app .icon{
+            font-size: 190%;
+            line-height: 1; 
+        }
+        .footer .actions .action-app .icon-name{
+            font-size: 10%;
+            line-height: 1; 
+        }
+        .footer .utilities.right{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            width: calc(20vw - 3vh);
+            padding-right: 1vh;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        @media only screen and (max-width: 768px) {
+            .footer .utilities.left{
+                display: none;
+            }
+            .footer .utilities.right{
+                width: calc(40vw - 3vh);
+                padding-right: 1vh;
+            }
+        }
+        .footer .utilities.right div{
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            color: white;
+            font-size: 1.55vh;
+        }
+        /* .footer .utilities-container{
+            position: fixed;
+            top: 1vh;
+            right: 1vh;
+            width: 20vw;
+            height: calc(100vh - 5vh - 5vh - 2vh);
+            background-color: rgba(143, 142, 137, 0.5);
+            border-radius: 5px;
+            padding: 1vh;
+        }
+        @media only screen and (max-width: 768px) {
+            .footer .utilities-container{
+                width: calc(100vw - 4vh);
+            }
+        } */
+        .body .tab .body-tab .card.container{
+            width: calc(100% - 2vh);
+            height: 100%;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            overflow-x: scroll;
+        }
+        .body .tab .body-tab .card.container .card.scrollable{
+            min-width: 90%;
+            width: 100%;
+            height: calc(100% - 2vh);
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            justify-content: center;
+            align-items: center;
+        }
+        .body .tab .body-tab .card.container .card.scrollable.york{
+            background-image: url('./yorkU_background.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .body .tab .body-tab .card.container .card.scrollable.cic{
+            background-image: url('./columbia-international-college_background.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .body .tab .body-tab .card.container .card.scrollable.carleton{
+            background-image: url('./carleton-university_background.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .body .tab .body-tab .card.container .card.scrollable .card.study-details{
+            width: 50%;
+            background-color: rgba(205, 35, 35, 0.5);
+            border-radius: 10px;
+        }
+        @media only screen and (max-width: 768px) {
+            .body .tab .body-tab .card.container .card.scrollable .card.study-details{
+                width: 70%;
+                flex-direction: column;
+            }
+        }
+        .body .tab .body-tab .card.container .card.scrollable .card.study-details .card.logo{
+            width: 40%;
+        }
+        @media only screen and (max-width: 768px) {
+            .body .tab .body-tab .card.container .card.scrollable .card.study-details .card.logo{
+                width: calc(100% - 2vh);
+            }
+        }
+        .body .tab .body-tab .card.container .card.scrollable .card.study-details .card.logo img{
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .body .tab .body-tab .card.container .card.scrollable .card.study-details .card.story-study-details{
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: transparent;
+            color: white;
+        }
+        .body .tab .body-tab .card.container .card.scrollable .card.study-details .card.story-study-details .title{
+            text-align: center;
+            font-size: 4vh;
+            font-weight: 900;
+            margin: 1vh;
+        }
+        .body .tab .body-tab .card.container .card.scrollable .card.study-details .card.story-study-details .subtitle{
+            text-align: center;
+            font-size: 3vh;
+            font-weight: 900;
+            margin: 1vh;
+        }
+        .grid1 { grid-area: first; }
+        .grid2 { grid-area: second; }
+        .grid3 { grid-area: third; }
+        .grid4 { grid-area: forth; }
+        .body .tab .body-tab .collection-of-skills{
+            display: grid;
+            grid-template-areas:
+                'first first second second third'
+                'first first second second third'
+                'first first forth forth forth';
+            gap: 1vh;
+            background-color: rgba(143, 142, 137, 0.2);
+            height: 100%;
+            border-radius: 10px;
+        }
+        @media only screen and (max-width: 768px) {
+            .body .tab .body-tab .collection-of-skills{
+                display: grid;
+                grid-template-areas:
+                    'first first second'
+                    'first first second'
+                    'first first second'
+                    'third third second'
+                    'forth forth forth'
+                    ;
+                gap: 1vh;
+                background-color: rgba(143, 142, 137, 0.2);
+                height: 100%;
+                border-radius: 10px;
+            }
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills{
+            background-color: rgb(112, 111, 111);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 0.5vh;
+            padding: 1vh;
+            justify-content: center;
+        }
+
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills.grid1 .skill {
+            width: calc((100% / 2) - 1vh);
+            height: calc((100% / 3) - 1vh);
+            background-color: white;
+            border-radius: 10px;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills.grid2 .skill {
+            width: calc((100% / 2) - 1vh);
+            height: calc((100% / 2) - 1vh);
+            background-color: white;
+            border-radius: 10px;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills.grid3 .skill {
+            width: calc((100% / 1) - 1vh);
+            height: calc((100% / 2) - 1vh);
+            background-color: white;
+            border-radius: 10px;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills.grid4 .skill {
+            width: calc((100% / 3) - 1vh);
+            height: calc((100% / 1) - 1vh);
+            background-color: white;
+            border-radius: 10px;
+        }
+        @media only screen and (max-width: 768px) {
+            .body .tab .body-tab .collection-of-skills .subcollection-of-skills.grid2 .skill {
+                width: calc((100% / 1) - 1vh);
+                height: calc((100% / 4) - 1vh);
+                background-color: white;
+                border-radius: 10px;
+            }
+            .body .tab .body-tab .collection-of-skills .subcollection-of-skills.grid3 .skill {
+                width: calc((100% / 2) - 1vh);
+                height: calc((100% / 1) - 1vh);
+                background-color: white;
+                border-radius: 10px;
+            }
+            .body .tab .body-tab .collection-of-skills .subcollection-of-skills.grid4 .skill {
+                width: calc((100% / 3) - 1vh);
+                height: calc((100% / 1) - 1vh);
+                background-color: white;
+                border-radius: 10px;
+            }
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .nodejs{
+            background-image: url('./nodejs_logo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .springboot{
+            background-image: url('./Spring-boot.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .laravel{
+            background-image: url('./laravel.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .golang{
+            background-image: url('./golang.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .eiffel{
+            background-image: url('./Eiffel_logo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .cprogramming{
+            background-image: url('./C_Programming_Language_logo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .mysql{
+            background-image: url('./mysql.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .mssql{
+            background-image: url('./microsoft-sql.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .postgre{
+            background-image: url('./postgresql.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .oracle{
+            background-image: url('./oracle.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .jira{
+            background-image: url('./jira.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .clickup{
+            background-image: url('./ClickUp-Logo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .figma{
+            background-image: url('./figma_logo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .excel{
+            background-image: url('./Microsoft_Excel-Logo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .body .tab .body-tab .collection-of-skills .subcollection-of-skills .worddoc{
+            background-image: url('./Microsoft_Word-Logo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+    <style>
+        .body .tab .body-tab .card .summary td.right{
+            border-right: solid 1px rgb(112, 111, 111);
+            text-align: right;
+            padding-right: 1vh;
+        }
+        .body .tab .body-tab .card .summary td.left{
+            padding-left: 1vh;
+            word-break: break-all;
+        }
+    </style>
+    <style>
+        body .background{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            background-color: #006ee6;
+
+        }
+        body .background .container{
+            position: absolute;
+            top: 30%;
+            right: 50%;
+            max-width: 50%;
+            text-align: right;
+        }
+        @media only screen and (max-width: 768px) {
+            body .background .container{
+                position: absolute;
+                top: 3%;
+                right: 50%;
+                max-width: 40%;
+                text-align: right;
+            }
+        }
+        body .background .container-image{
+            position: absolute;
+            top: 30%;
+            right: 20%;
+            width: 20%;
+            z-index: 2;
+        }
+        body .background .title{
+            word-break: break-all;
+            font-size: 6vh;
+            font-weight: 900;
+            color: white;
+        }
+        @media only screen and (max-width: 768px) {
+            body .background .title{
+                word-break: break-all;
+                font-size: 3vh;
+                font-weight: 900;
+                color: white;
+            }
+        }
+        body .background .subtitle{
+            font-size: 5vh;
+            font-weight: 900;
+            color: white;
+        }
+        @media only screen and (max-width: 768px) {
+            body .background .subtitle{
+                font-size: 2vh;
+                font-weight: 900;
+                color: white;
+            }
+        }
+        body .background .label{
+            font-size: 2vh;
+            color: white;
+        }
+        body .background .right{
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="title">
+                Yusuf Adisaputro's
+            </div>
+            <div class="subtitle">
+                Portfolio
+            </div>
+            <div class="label">
+                <br>
+                Possessing a comprehensive background in Project Management, leadership, and IT development, I have effectively overseen and accomplished a wide range of projects, including ERP systems, Loan Management Systems (LMS), Point of Sale (POS) application systems, and E-Commerce Systems. My vast experience and consistent success underscore my exceptional suitability for the role of Project Manager. I am assured that my unique blend of skills and expertise will surpass your anticipations.
+            </div>
+        </div>
+        <img class="container-image" src="./img_avatar.png"/>
+        <div class="right">
+        
+        </div>
+    </div>
+    <div class="body">
+    
+        <div class="tab">
+            <div class="header">
+                <div class="action close" onclick="closeTab(this)"></div>
+                <div class="action expand"></div>
+            </div>
+            <div class="body-tab">
+                
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="utilities left">
+
+            </div>
+            <div class="actions">
+                <div class="action-app" onclick="openMenu(this)">
+                    <div class="icon">E</div>
+                    <div class="icon-name">Education</div>
+                </div>
+                <div class="action-app" onclick="openMenu(this)">
+                    <div class="icon">A</div>
+                    <div class="icon-name">About</div>
+                </div>
+                <div class="action-app" onclick="openMenu(this)">
+                    <div class="icon">S</div>
+                    <div class="icon-name">Skills</div>
+                </div>
+            </div>
+
+            <!-- <div class="utilities-container">
+            </div> -->
+
+            <div class="utilities right">
+                <div class="live_clock"></div>
+                <div class="live_date"></div>
+            </div>
+
+        </footer>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            startTime();
+            startCalendar();
+        });
+
+        function closeTab(element){
+            $(`.body .tab`).css(`visibility`, `hidden`);
+            $(`.action-app`).removeClass(`active`);
+        }
+
+        function openMenu(element){
+            $(`.action-app`).removeClass(`active`);
+            $(element).addClass(`active`);
+            let text = $(element).find('.icon-name').text();
+            $(`.body .tab`).css(`visibility`, `visible`);
+            if(text.toLowerCase() == 'about'){
+                renderAbout();
+            }else if(text.toLowerCase() == 'education'){
+                renderEducation();
+            }else if(text.toLowerCase() == 'skills'){
+                renderSkills()
+            }
+        }
+
+        $('#pp').on('contextmenu', function(e) {
+            return false;
+        });
+
+        function startCalendar() {
+            const today = new Date();
+            let y = today.getFullYear();
+            let m = today.getMonth() + 1;
+            let d = today.getDate();
+            y = checkTime(y);
+            m = checkTime(m);
+            d = checkTime(d);
+            $('.live_date').html(y + "-" + m + "-" + d);
+            setTimeout(startTime, 15000);
+        }
+
+        function startTime() {
+            const today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+            let ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12;
+            h = h ? h : 12; // the hour '0' should be '12'
+            h = checkTime(h);
+            m = checkTime(m);
+            s = checkTime(s);
+            $('.live_clock').html(h + ":" + m + ":" + s + " " + ampm);
+
+            setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+
+        function renderSkills(){
+            $(`.body-tab`).empty();
+            $(`.body-tab`).append(`
+                <div class="collection-of-skills">
+                    <div class="subcollection-of-skills grid1">
+                        <div class="skill nodejs"></div>
+                        <div class="skill springboot"></div>
+                        <div class="skill laravel"></div>
+                        <div class="skill golang"></div>
+                        <div class="skill eiffel"></div>
+                        <div class="skill cprogramming"></div>
+                    </div>
+                    <div class="subcollection-of-skills grid2">
+                        <div class="skill mysql"></div>
+                        <div class="skill postgre"></div>
+                        <div class="skill mssql"></div>
+                        <div class="skill oracle"></div>
+                    </div>
+                    <div class="subcollection-of-skills grid3">
+                        <div class="skill jira"></div>
+                        <div class="skill clickup"></div>
+                    </div>
+                    <div class="subcollection-of-skills grid4">
+                        <div class="skill figma"></div>
+                        <div class="skill excel"></div>
+                        <div class="skill worddoc"></div>
+                    </div>
+                </div>
+            `);
+        }
+
+        function renderEducation(){
+            $(`.body-tab`).empty();
+            $(`.body-tab`).append(`
+                <div class="card container">
+                    <div class="card scrollable york">
+                        <div class="card study-details">
+                            <div class="card logo">
+                                <img src="./York-University-logo.jpeg"/>
+                            </div>
+                            <div class="card story-study-details">
+                                <div class="title">Bachelor of Arts in Computer Science</div>
+                                <div class="subtitle">Sept 2015 - 2019</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card scrollable carleton">
+                        <div class="card study-details">
+                            <div class="card logo">
+                                <img src="./carleton-logo.png"/>
+                            </div>
+                            <div class="card story-study-details">
+                                <div class="title"> Bachelor of Math in Game Development</div>
+                                <div class="subtitle">Sept 2014 - 2015</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card scrollable cic">
+                        <div class="card study-details">
+                            <div class="card logo">
+                                <img src="./CIC_logo.png"/>
+                            </div>
+                            <div class="card story-study-details">
+                                <div class="title">Columbia International College</div>
+                                <div class="subtitle">High School</div>
+                                <div class="subtitle">Sept 2012 - 2014</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+        }
+
+        function renderAbout(){
+            $(`.body-tab`).empty();
+            $(`.body-tab`).append(`
+                <div class="card headline">
+                    <div class="card pp">
+                        <img id="pp" class="image" src="./img_avatar.png"/> 
+                    </div>
+                    <div class="card summary">
+                        <table>
+                            <tr>
+                                <td class="right">Email</td>
+                                <td class="left"><a href="mailto:yusuf_adisaputro@hotmail.com">yusuf_adisaputro@hotmail.com</a></td>
+                            </tr>
+                            <tr>
+                                <td class="right">Phone number</td>
+                                <td class="left"><a href="https://wa.me/6281297698374?text=Hi%20Yusuf%20Adisaputro!%20I%20have%20read%20your%20profile%20and%20am%20interested%20in%20giving%20you%20an%20interview">+62 812-9769-8374</a></td>
+                            </tr>
+                            <tr>
+                                <td class="right">Date of birth</td>
+                                <td class="left">25 September 1996</td>
+                            </tr>
+                            <tr>
+                                <td class="right">Residence address</td>
+                                <td class="left">Gading Serpong, Kab. Tangerang Selatan</td>
+                            </tr>
+                            <tr>
+                                <td class="right">Github</td>
+                                <td class="left"><a href="https://github.com/josephadisaputro">https://github.com/josephadisaputro</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card stories">
+                    <div class="card life-line">
+                        <div class="line"></div>
+                        <div class="ball">Now</div>
+                    </div>
+                    <div class="card line-details">
+                        <div class="title">
+                            PT ITC Auto Multi Finance
+                        </div>
+                        <div class="subtitle">
+                            Head of Initiative Development (November 2022 – Now)
+                        </div>
+                        <div class="story">
+                            Established in 2018, PayKu is a distinguished financing company specialising in mobile and
+                            smartphone financing. The company operates under the management of PT ITC Auto Multi Finance,
+                            also known as IAF Multi Finance. PayKu offers its clients instalment financing services, with down
+                            payments commencing from as low as 10%. Notably, the company does not impose late fees and
+                            operates without the need for credit cards. All operations and services are conducted in compliance
+                            with the regulations set forth by the Financial Services Authority (OJK).&nbsp;<div><br></div><div>&nbsp;Job Responsibilities:&nbsp;</div><div><br></div><div>&nbsp;1. Assume the role of Product Owner and Project Manager for the development of mobile and
+                            web applications, catering to both customer and internal requirements.&nbsp;</div><div><br></div><div>&nbsp;2. Ensure all developments are in compliance with the regulations of the Financial Services
+                            Authority (OJK).&nbsp;</div><div><br></div><div>&nbsp;3. Exhibit initiative in IT and product development, specifically for PayKu and PayKu Premium.&nbsp;</div><div><br></div><div>&nbsp;4. Manage teams and projects effectively, creating comprehensive roadmaps for all undertaken
+                            projects.&nbsp;</div><div><br></div><div>&nbsp;5. Conduct research to identify potential improvements in product offerings, financial services,
+                            and IT-related developments.&nbsp;</div><div><br></div><div>&nbsp;6. Collaborate with the Scrum Master to ensure successful project delivery.&nbsp;</div><div><br></div><div>&nbsp;7. Work closely with client relations teams to foster innovation and develop new products.
+                        </div></div>
+                    </div>
+                </div>
+                <div class="card stories">
+                    <div class="card life-line">
+                        <div class="line"></div>
+                        <div class="ball">Oct 2022</div>
+                    </div>
+                    <div class="card line-details">
+                        <div class="title">
+                            INFT Singapore Pte. Ltd.
+                        </div>
+                        <div class="subtitle">
+                            Senior Back End Engineer and Team Lead (PMO) (January 2021 - End of October 2022)
+                        </div>
+                        <div class="story">
+                            INFT.co, based in Singapore, is a distinguished provider of financial technology services, catering to
+                            both the Singaporean and Malaysian markets. The company has developed a web application and a
+                            modular online mobile application designed to streamline financial and accounting processes. These
+                            applications facilitate efficient management of expenses, local and international money transfers,
+                            loans, invoices, among other financial operations.&nbsp;<div><br></div><div>&nbsp;Job Responsibilities:&nbsp;</div><div><br></div><div>&nbsp;1. Serve as the Scrum Master, presenting the vision and user stories from product owners to
+                            the entire Scrum team.&nbsp;</div><div><br></div><div>&nbsp;2. Implement feature upgrades as requested by product owners.&nbsp;</div><div><br></div><div>&nbsp;3. Coordinate with vendors for code integration and implementation.&nbsp;</div><div><br></div><div>&nbsp;4. Assist the team in resolving any difficulties encountered.&nbsp;</div><div><br></div><div>&nbsp;5. Host daily stand-ups, conduct necessary technical meetings, and plan for upcoming sprints.&nbsp;</div><div><br></div><div>&nbsp;6. Manage sprint logs effectively.&nbsp;</div><div><br></div><div>&nbsp;7. Collaborate with product owners to design improved workflows for technical
+                            implementations.&nbsp;</div><div><br></div><div>&nbsp;8. Address client-deployed issues as they arise.&nbsp;</div><div><br></div><div>&nbsp;9. Liaise with third-party vendors, including those from Thailand, to facilitate developments and
+                            expansions.&nbsp;</div><div><br></div><div>&nbsp;10. Provide product owners with development time estimates for each sprint.    
+                        </div></div>
+                    </div>
+                </div>
+                <div class="card stories">
+                    <div class="card life-line">
+                        <div class="line"></div>
+                        <div class="ball">Dec 2020</div>
+                    </div>
+                    <div class="card line-details">
+                        <div class="title">
+                            PT Vantsing International Group (PT Solusi Digital Internusa)
+                        </div>
+                        <div class="subtitle">
+                            IT Manager (January 2020 - December 2020)
+                        </div>
+                        <div class="story">
+                            <div><span style="font-size: 2vh;">I commenced my journey as an IT Supervisor and Senior Developer for an e-commerce project, which
+                            encompassed the development of Mobile, Website, and ERP Systems. My commitment and
+                            proficiency led to my promotion as the IT Manager for the entire project, overseeing two teams
+                            based in Indonesia and China. The development phase was successfully completed, passing the User
+                            Acceptance Testing (UAT), and is currently operational.&nbsp;</span><br></div><div><br></div><div>In my capacity as an IT Manager and Senior Developer, my responsibilities extended beyond the
+                            realms of development structure, technical diagrams, permissions, documentation, presentation,
+                            and reporting. I also actively participated in coding alongside my team.&nbsp;</div><div><br></div><div>Given the location of the company's head office in China, I was entrusted with an expanded scope of
+                            work and promoted to the position of Vice General Manager. This promotion was a testament to
+                            their confidence in my ability to contribute to marketing and business analysis required for the
+                            e-commerce sector in the Indonesian market, as well as manage the team in Indonesia effectively.&nbsp;<div><br></div><div>&nbsp;Job Responsibilities:&nbsp;</div><div><br></div><div>&nbsp;1. Oversee three development projects encompassing ERP systems, Mobile App, and Website
+                            development.&nbsp;</div><div><br></div><div>&nbsp;2. Manage the ERP system for key business processes such as sales, invoices, products, etc.&nbsp;</div><div><br></div><div>&nbsp;3. Provide the technical structure, security planning, workflow, and UI flow for Mobile and Web
+                            applications.&nbsp;</div><div><br></div><div>&nbsp;4. Ensure successful completion of testing stages (SIT, UAT, Production).&nbsp;</div><div><br></div><div>&nbsp;5. Set up essential tools including git repository, test server, and accepted automation testing
+                            tools.&nbsp;</div><div><br></div><div>&nbsp;6. Handle third-party API integration such as Tiki, BCA VA, Midtrans.&nbsp;</div><div><br></div><div>&nbsp;7. Collaborate with the team to develop and code front-end and back-end using Node.js
+                            (Express), React, and Vanilla JS.&nbsp;</div><div><br></div><div>&nbsp;8. Act as the Product Owner to achieve the target vision and mission.    
+                        </div></div></div>
+                    </div>
+                </div>
+            `)
+        }
+
+    </script>
+</body>
+</html>
