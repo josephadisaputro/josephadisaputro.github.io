@@ -32,13 +32,23 @@
         }
         .body .tab{
             visibility: hidden;
+            position: fixed;
+            top: 1vh;
+            left: 1vh;
             width: calc(100vw - 2vh);
-            height: calc(100vh - 5vh - 5vh);
+            height: calc(100vh - 11vh);
             background-color: white;
             border-radius: 5px;
+            transition: 0.5s;
+        }
+        .body .tab.expanded{
+            top: 0vh !important;
+            left: 0vh !important;
+            width: calc(100vw) !important;
+            height: calc(100vh) !important;
         }
         .body .tab .header{
-            width: calc(100vw - 2vh);
+            width: 100%;
             height: calc(3vh);
             background-color: rgba(143, 142, 137, 0.2);
             border-radius: 5px 5px 0 0 ;
@@ -214,6 +224,10 @@
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
+            transition: 0.5s;
+        }
+        .footer.shrinked{
+            bottom: -7vh !important;
         }
         .footer .utilities{
             width: calc(20vw - 2vh);
@@ -588,7 +602,7 @@
         body .background .container{
             position: absolute;
             top: 30%;
-            right: 50%;
+            right: 45%;
             max-width: 50%;
             text-align: right;
         }
@@ -607,6 +621,8 @@
             right: 20%;
             width: 20%;
             z-index: 2;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         }
         body .background .title{
             word-break: break-all;
@@ -664,6 +680,19 @@
             align-items: center;
             justify-content: center;
         }
+        .password-request .contact-for-help{
+            border-radius: 10px;
+            border: none;
+            background-color: #128C7E;
+            color: white;
+            font-size: 3vh;
+            padding-left: 2vh;
+            padding-right: 2vh;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            margin-bottom: 2vh;
+            cursor: pointer;
+        }
         .password-request div{
             margin: 1vh;
         }
@@ -679,11 +708,19 @@
             font-weight: 900;
             color: white;
         }
+        .password-request .subtitle.smaller{
+            text-align: center;
+            font-size: 2vh;
+            font-weight: 900;
+            color: white;
+        }
         .password-request .input-group{
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             font-size: 3vh;
+            justify-content: center;
+            align-items: center;
         }
         @media only screen and (max-width: 768px) {
             .password-request .input-group{
@@ -695,30 +732,45 @@
                 justify-content: center;
             }
         }
-        .password-request .input-group .input-password{
-            border-radius: 10px;
+        .password-request .input-group .input-subgroup{
+            display: flex;
+            flex-direction: row;
+        }
+        .password-request .input-group .input-subgroup .input-password{
+            border-radius: 10px 0 0 10px;
             border: none;
+            width: 10ch;
+            height: 3.5vh;
+            padding: 0;
             background-color: white;
             font-size: 3vh;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
             margin-left: 2vh;
-            margin-right: 2vh;
             text-align: center;
         }
-        .password-request .input-group .input-password:focus{
+        .password-request .input-group .input-subgroup .input-password:focus{
             border: none;
             outline: none;
+        }
+        .password-request .input-group .input-subgroup .toggle-password{
+            border-radius: 0 10px 10px 0;
+            border: none;
+            background-color: #006ee6;
+            color: white;
+            height: 3.5vh;
+            font-size: 2vh;
+            padding-left: 2vh;
+            padding-right: 2vh;
+            margin-right: 2vh;
+            cursor: pointer;
         }
         .password-request .input-group .button-submit{
             border-radius: 10px;
             border: none;
             background-color: #006ee6;
             color: white;
-            font-size: 3vh;
-            padding-left: 2vh;
-            padding-right: 2vh;
-            padding-top: 1vh;
-            padding-bottom: 1vh;
+            height: 3.5vh;
+            font-size: 2vh;
             cursor: pointer;
         }
         @media only screen and (max-width: 768px) {
@@ -727,14 +779,9 @@
                 border: none;
                 background-color: #006ee6;
                 color: white;
-                font-size: 3vh;
-                width: fit-content;
-                padding-left: 2vh;
-                padding-right: 2vh;
-                padding-top: 1vh;
-                padding-bottom: 1vh;
+                height: 3.5vh;
+                font-size: 2vh;
                 cursor: pointer;
-                margin-top: 2vh;
             }
         }
         .failed-alert{
@@ -765,7 +812,7 @@
                 Possessing a comprehensive background in Project Management, leadership, and IT development, I have effectively overseen and accomplished a wide range of projects, including ERP systems, Loan Management Systems (LMS), Point of Sale (POS) application systems, and E-Commerce Systems. My vast experience and consistent success underscore my exceptional suitability for the role of Project Manager. I am assured that my unique blend of skills and expertise will surpass your anticipations.
             </div>
         </div>
-        <img class="container-image" src="./img_avatar.png"/>
+        <img class="container-image" src="./pp.jpeg"/>
         <div class="right">
         
         </div>
@@ -775,7 +822,7 @@
         <div class="tab">
             <div class="header">
                 <div class="action close" onclick="closeTab(this)"></div>
-                <div class="action expand"></div>
+                <div class="action expand" onclick="expandTab(this)"></div>
             </div>
             <div class="body-tab">
                 
@@ -815,9 +862,13 @@
     <div class="password-request">
         <div class="title">Password is required</div>
         <div class="subtitle">Entering password is required for you to enter before entering the website and viewing the content portfolio</div>
-        <div class="subtitle">Please respect the creator of this portfolio as this portfolio is intended for recruitment only and the content on this website cannot be downloaded nor shared, unless you request owner's permission.</div>
+        <div class="subtitle smaller">Please respect the creator of this portfolio as this portfolio is intended for recruitment only and the content on this website cannot be downloaded nor shared, unless you request owner's permission.</div>
+        <button class="contact-for-help" onclick="sendMessage()">Click here to learn more!</button>
         <div class="input-group">
-            <input class="input-password" type="password" placeholder="password"/>
+            <div class="input-subgroup">
+                <input class="input-password" type="password" placeholder="password"/>
+                <button type="button" class="toggle-password">Show/Hide</button>
+            </div>
             <button id="submitpassword" class="button-submit">Submit</button>
         </div>
     </div>

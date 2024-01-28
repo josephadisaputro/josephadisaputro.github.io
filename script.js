@@ -2,7 +2,7 @@ $(document).ready(function() {
     startTime();
     startCalendar();
     $('#submitpassword').click(function() {
-        var password = 'ihireyusufadisaputro';
+        var password = 'ihireyusuf';
         var inputPassword = $('.input-password').val();
         if (password === inputPassword) {
             $('.password-request').remove();
@@ -16,9 +16,62 @@ $(document).ready(function() {
     });
 });
 
+document.querySelector('.input-password').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        var password = 'ihireyusuf';
+        var inputPassword = $('.input-password').val();
+        if (password === inputPassword) {
+            $('.password-request').remove();
+        } else {
+            var failedAlert = $('<div/>', {
+                'class': 'failed-alert',
+                'text': 'Password does not match!'
+            });
+            $('.password-request').append(failedAlert);
+        }
+    }
+});
+
+document.querySelector('.toggle-password').addEventListener('click', function(e) {
+    var passwordInput = document.querySelector('.input-password');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+});
+
+function sendMessage() {
+    $.ajax({
+        url: 'https://api.ipify.org?format=jsonp',
+        dataType: 'jsonp',
+        success: function(data) {
+            let ip = data.ip;
+            let message = "Hi Yusuf, I would like to ask for your permission to access your portfolio on github, please help give me the password to enter your portfolio. \n\nIP address: " + ip + "\n\nThank you";
+            let encodedMessage = encodeURIComponent(message);
+            let phoneNumber = "081297698374";
+            window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        }
+    });
+}
+
+function expandTab(element){
+    if($(element).closest('.tab').hasClass(`expanded`)){
+        $(element).closest('.tab').removeClass(`expanded`);
+        $('.footer').removeClass(`shrinked`);
+    }else{
+        $(element).closest('.tab').addClass(`expanded`);
+        $('.footer').addClass(`shrinked`);
+    }
+}
+
 function closeTab(element){
     $(`.body .tab`).css(`visibility`, `hidden`);
     $(`.action-app`).removeClass(`active`);
+    if($(element).closest('.tab').hasClass(`expanded`)){
+        $(element).closest('.tab').removeClass(`expanded`);
+        $('.footer').removeClass(`shrinked`);
+    }
 }
 
 function openMenu(element){
@@ -35,7 +88,7 @@ function openMenu(element){
     }
 }
 
-$('#pp').on('contextmenu', function(e) {
+$('.container-image').on('contextmenu', function(e) {
     return false;
 });
 
@@ -158,7 +211,7 @@ function renderAbout(){
     $(`.body-tab`).append(`
         <div class="card headline">
             <div class="card pp">
-                <img id="pp" class="image" src="./img_avatar.png"/> 
+                <img id="pp" class="image" src="./pp.jpeg"/> 
             </div>
             <div class="card summary" id="personal-summary">
                 <table>
