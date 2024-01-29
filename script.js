@@ -85,6 +85,8 @@ function openMenu(element){
         renderEducation();
     }else if(text.toLowerCase() == 'skills'){
         renderSkills()
+    }else if(text.toLowerCase() == 'projects'){
+        renderProjects()
     }
 }
 
@@ -133,35 +135,33 @@ function checkTime(i) {
     return i;
 }
 
-function renderSkills(){
-    $(`.body-tab`).empty();
-    $(`.body-tab`).append(`
-        <div class="collection-of-skills">
-            <div class="subcollection-of-skills grid1">
-                <div class="skill nodejs"></div>
-                <div class="skill springboot"></div>
-                <div class="skill laravel"></div>
-                <div class="skill golang"></div>
-                <div class="skill eiffel"></div>
-                <div class="skill cprogramming"></div>
-            </div>
-            <div class="subcollection-of-skills grid2">
-                <div class="skill mysql"></div>
-                <div class="skill postgre"></div>
-                <div class="skill mssql"></div>
-                <div class="skill oracle"></div>
-            </div>
-            <div class="subcollection-of-skills grid3">
-                <div class="skill jira"></div>
-                <div class="skill clickup"></div>
-            </div>
-            <div class="subcollection-of-skills grid4">
-                <div class="skill figma"></div>
-                <div class="skill excel"></div>
-                <div class="skill worddoc"></div>
-            </div>
-        </div>
-    `);
+function renderSkills() {
+    const skills = [
+        ['nodejs', 'springboot', 'laravel', 'golang', 'eiffel', 'cprogramming'],
+        ['mysql', 'postgre', 'mssql', 'oracle'],
+        ['jira', 'clickup'],
+        ['figma', 'excel', 'worddoc']
+    ];
+
+    $('.body-tab').empty();
+    const collectionOfSkills = $('<div>').addClass('collection-of-skills');
+    $('.body-tab').append(collectionOfSkills);
+
+    let delay = 0; // initial delay
+    const delayIncrement = 200; // delay increment for each append
+
+    skills.forEach((skillGroup, index) => {
+        const subCollectionOfSkills = $('<div>').addClass(`subcollection-of-skills grid${index + 1}`);
+        collectionOfSkills.append(subCollectionOfSkills);
+
+        skillGroup.forEach(skill => {
+            setTimeout(() => {
+                const skillDiv = $('<div>').addClass(`skill ${skill}`);
+                subCollectionOfSkills.append(skillDiv);
+            }, delay);
+            delay += delayIncrement;
+        });
+    });
 }
 
 function renderEducation(){
@@ -319,4 +319,99 @@ function renderAbout(){
             </div>
         </div>
     `)
+}
+
+function renderProjects(){
+    $(`.body-tab`).empty();
+    $(`.body-tab`).append(`
+        <div class="folders">
+            <div class="folder-header">PT. ITC Auto Multi Finance</div>
+            <div class="grouped">
+                <div class="card">
+                    <div class="image">
+                        <img src="./empower-mobile.png">
+                    </div>
+                    <div class="title">
+                        Empower Mobile App
+                    </div>
+                    <div class="description">
+                        The Empower Mobile Application signifies the commencement of my project portfolio at PT ITC Auto Multi Finance, primarily aimed at diminishing operational expenses (OPEX). In the erstwhile system, sales counters were burdened with laptops, an expensive and unwieldy solution, to gain access to our backend site, Empower Web. This platform served as a sales counter tool, facilitating customers in securing new loans for smartphone purchases or processing loan applications submitted via PayKu Mobile. This process has been streamlined and simplified with the introduction of the Empower Mobile App.
+                        <br>
+                        The interaction between sales counters and customers is very important, particularly during the credit calculation phase prior to contract finalization, a critical juncture for us, which this stage is now managed within the Empower Mobile App. Furthermore, the installation procedure for Mobile Device Management (MDM) on Empower Web has been simplified for easier utilization by sales counters via the Empower Mobile App.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="./payku premium app 2.jpg">
+                    </div>
+                    <div class="title">
+                        PayKu Premium App
+                    </div>
+                    <div class="description">
+                        Following meticulous consultations with our Risk and Product departments, we have reached the consensus that the potential growth of the retail market may not be sufficient to counterbalance the negative impact of our current receivables’ aging. Consequently, we have developed the PayKu Premium program. Originally designed for the B2B2E market, we identified a unique opportunity to tailor an application specifically for this purpose.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="./empower web.png">
+                    </div>
+                    <div class="title">
+                        Empower Web
+                    </div>
+                    <div class="description">
+                        Empower Web has been, and continues to be, an integral tool utilized by internal team of PT ITC Auto Multi Finance. It serves various departments, ranging from acquisitions to finance and accounting. This platform is the primary collection and processing point for all new credit applications. However, it is important to clarify that Empower Web does not function as a Loan Management System. Instead, it acts as a conduit to our existing loan management system namely Confins, where details of installments and payment histories are documented.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="folders">
+            <div class="folder-header">Inft.co</div>
+            <div class="grouped">
+                <div class="card">
+                    <div class="image">
+                        <img src="./inft.png">
+                    </div>
+                    <div class="title">
+                        https://app.inft.co/
+                    </div>
+                    <div class="description">
+                        Inft.co is a comprehensive digital platform, accessible via web and mobile applications on both Android and iOS. It is designed to cater to the needs of B2B clients, offering them the ability to apply for business loans seamlessly.
+                        <br><br>
+                        In addition to loan services, Inft.co provides an array of features to facilitate day-to-day business management. These include the creation of new Virtual Account (VA) and sub-VA accounts, which can be utilized for monthly auto-debit and standard purchases in Singapore and Malaysia.
+                        <br><br>
+                        Moreover, Inft.co offers cross-border money transfer services, enabling transactions within Singapore, as well as to Malaysia and Australia.
+                        <br><br>
+                        One of the standout features of Inft.co is its debt and receivables invoice management system. This feature allows customers to send receivables invoices directly from the web application to their clients via email, thereby streamlining the payment process. This system also supports QR payments, further enhancing its convenience and efficiency.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="folders">
+            <div class="folder-header">Vantsing International Group</div>
+            <div class="grouped">
+                <div class="card">
+                    <div class="image">
+                        <img src="./vantsing.jpg">
+                    </div>
+                    <div class="title">
+                        Vantsing
+                    </div>
+                    <div class="description">
+                        At Vantsing International Group, my initial assignment involved the development of a comprehensive Enterprise Resource Planning (ERP) system. This sophisticated platform was engineered to streamline a multitude of operations including, but not limited to, management of purchase orders, sales orders, delivery orders, invoices, returned goods, warehouse operations, customer relations, and inventory. This project served as a significant milestone in my professional journey, providing a robust foundation for my future endeavors.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <img src="./soldays.png">
+                    </div>
+                    <div class="title">
+                        Soldays
+                    </div>
+                    <div class="description">
+                        Soldays represented the second significant project entrusted to me, marking a pivotal shift in strategic direction. Consequently, my responsibilities were augmented to encompass the enhancement of the existing ERP system’s functionalities. Additionally, I was commissioned to architect an E-commerce system, further broadening the scope of my professional expertise. This project underscored my ability to adapt to new visions and deliver innovative solutions.
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
 }
