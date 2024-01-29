@@ -49,7 +49,7 @@ function sendMessage() {
             let ip = data.ip;
             let message = "Hi Yusuf, I would like to ask for your permission to access your portfolio on github, please help give me the password to enter your portfolio. \n\nIP address: " + ip + "\n\nThank you";
             let encodedMessage = encodeURIComponent(message);
-            let phoneNumber = "081297698374";
+            let phoneNumber = "+6281297698374";
             window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         }
     });
